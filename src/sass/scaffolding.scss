@@ -1,0 +1,154 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  position: relative;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #dddddd76;
+  color: #212121;
+  line-height: 1.5;
+
+
+}
+
+ul{
+margin: 0px;
+  padding:0px;
+}
+
+li{
+  padding: 10px;
+  margin: 10px;
+border: 1px solid grey;
+border-radius: 10px;
+list-style: none;
+}
+
+body > p {
+display: inline-block;
+padding: 10px;
+background-color: rgba(162, 48, 48, 0.308);
+border-radius: 10px;
+}
+
+p{
+padding: 10px;
+margin: 10px;
+outline: 1px dashed red;
+border-radius: 10px;
+}
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button{
+  width: 70px;
+  height: 30px;
+padding:1px 7px;
+align-items: center;
+color: #d8edc8;
+background-color: rgb(25, 5, 44);
+border: 0.3px solid rgb(70, 6, 6);
+border-radius: 4px;
+}
+
+.div-a-center{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.input-js{
+padding: 5px;
+margin: 10px;
+
+width: 30%;
+height: 30px;
+
+border-radius: 5px;
+
+font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+font-size: 20px;
+}
+
+.news{
+  max-width: 700px;
+outline: 2px solid rgb(255, 255, 255);
+padding: 10px;
+margin: 15px;
+border-radius: 10px;
+}
+
+.news:hover{
+box-shadow: #b9b9b9 3px 4px 12px;
+}
+
+.js-markup{
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.wrapper_input{
+  display: inline-block;
+  padding: 10px;
+  background-color: rgba(174, 180, 180, 0.183);
+}
+.input{
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px;
+  border-radius: 5px;
+background-color: rgba(255, 235, 205, 0.084);
+}
+
+.year_time{
+padding: 20px;
+margin-left: auto;
+margin-right: auto;
+background-color: rgba(235, 203, 182, 0.441);
+}
+
+.year_time > p{
+display: block;
+margin-left: auto;
+margin-right: auto;
+}
+
+.timer{
+  display: inline-flex;
+  justify-content: space-around;
+  margin-left: auto;
+  margin-right: auto;
+padding: 20px;
+max-width: 700px;
+border-radius: 10px;
+background-color: rgba(131, 185, 232, 0.385);
+}
+
+.field{
+margin: 5px;
+font-style:italic;
+font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}

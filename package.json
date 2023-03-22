@@ -1,0 +1,41 @@
+{
+  "name": "js-hw-13",
+  "version": "2.0.0",
+  "description": "",
+  "homepage": "https://malk0v.github.io/js-hw-13/",
+  "scripts": {
+    "start": "parcel src/*.html",
+    "build": "parcel build src/*.html --public-url /js-hw-13/",
+    "deploy": "gh-pages -d dist",
+    "predeploy": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/malk0v/js-hw-13.git"
+  },
+  "keywords": [],
+  "author": "Anton Malkov <antonio.izym@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/malk0v/js-hw-13/issues"
+  },
+  "browserslist": "> 0.5%, last 2 versions, not dead",
+  "dependencies": {
+    "@parcel/transformer-sass": "^2.6.0",
+    "gh-pages": "^5.0.0",
+    "lodash.debounce": "^4.0.8",
+    "modern-normalize": "^1.1.0",
+    "parcel-plugin-handlebars-precompile": "^1.0.2",
+    "parcel-transformer-handlebars": "^1.0.0"
+  },
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.6.0",
+    "buffer": "^5.7.1",
+    "parcel": "^2.8.3",
+    "parcel-plugin-nuke-dist": "^1.0.1",
+    "parcel-reporter-clean-dist": "^1.0.4",
+    "pnotify": "^5.2.0",
+    "posthtml-include": "^1.7.4",
+    "util": "^0.12.5"
+  }
+}
