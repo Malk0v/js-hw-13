@@ -1,48 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Homework 12-countries</title>
-    <link rel="stylesheet" href="./sass/main.scss">
-      <script src="./index.js" type="module"></script>
+    <title>Search Images</title>
+    <link rel="stylesheet" href="./sass/index.scss" />
+    <script src="./index.js" type="module"></script>
 
-    <link href="../node_modules/@pnotify/core/dist/PNotify.css"
-  rel="stylesheet"
-  type="text/css"
-/>
-
-<link href="../node_modules/@pnotify/mobile/dist/PNotifyMobile.css"
-  rel="stylesheet"
-  type="text/css"
-/>
-
-<link
-  href="../node_modules/@pnotify/core/dist/Material.css"
-  rel="stylesheet"
-  type="text/css"
-/>
-
-<link
-  rel="stylesheet"
-  href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap"
-/>
-
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
   </head>
 
   <body>
     <a href="https://malk0v.github.io/index/#work">На главную</a>
 
     <div class="div-a-center">
-      <h1>Поиск стран</h1>
-
-      <input type="text" class="input-js" placeholder="Ukraine">
-
+      <form class="search-form" id="search-form">
+        <input
+          type="text"
+          name="query"
+          autocomplete="off"
+          placeholder="Search images..."
+        />
+      </form>
     </div>
 
-  <ul class="div-a-center list-js"> </ul>
+    <ul class="gallery">
+      <!-- Список <li> с карточками изображений -->
 
-    <script type="module"></script>
+      <div class="photo-card">
+        <img
+          src="https://pixabay.com/get/57e5d54b4c53af14f6da8c7dda793376173cd8e7524c704c702873dc9f44c551_640.jpg"
+          alt="foto"
+        />
+
+        <div class="stats">
+          <p class="stats-item">
+            <i class="material-icons">thumb_up</i>
+            1108
+          </p>
+          <p class="stats-item">
+            <i class="material-icons">visibility</i>
+            320321
+          </p>
+          <p class="stats-item">
+            <i class="material-icons">comment</i>
+            129
+          </p>
+          <p class="stats-item">
+            <i class="material-icons">cloud_download</i>
+            176019
+          </p>
+        </div>
+      </div>
+    </ul>
   </body>
 </html>

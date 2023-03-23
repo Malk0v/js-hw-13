@@ -1,9 +1,7 @@
 //=======================================
-import style from './sass/main.scss';
+import style from './sass/index.scss';
 //импорт данных с бекэнда
-import fetchCountries from './js/fetchCountries';
-// урезает количество запросов 
-import debounce from 'lodash.debounce';
+import fetchCountries from './js/components/apiService.js';
 // библиотека уведомлений
 import {
   alert,

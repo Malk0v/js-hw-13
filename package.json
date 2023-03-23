@@ -19,7 +19,6 @@
   "bugs": {
     "url": "https://github.com/malk0v/js-hw-13/issues"
   },
-  "browserslist": "> 0.5%, last 2 versions, not dead",
   "dependencies": {
     "@parcel/transformer-sass": "^2.6.0",
     "gh-pages": "^5.0.0",
@@ -37,5 +36,6 @@
     "pnotify": "^5.2.0",
     "posthtml-include": "^1.7.4",
     "util": "^0.12.5"
-  }
+  },
+  "browserslist": "> 0.5%, last 2 versions, not dead"
 }
