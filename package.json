@@ -20,13 +20,14 @@
     "url": "https://github.com/malk0v/js-hw-13/issues"
   },
   "dependencies": {
+    "@parcel/transformer-css": "^2.8.3",
     "@parcel/transformer-sass": "^2.6.0",
     "gh-pages": "^5.0.0",
     "lodash.debounce": "^4.0.8",
     "modern-normalize": "^1.1.0",
+    "notiflix": "^3.2.6",
     "parcel-plugin-handlebars-precompile": "^1.0.2",
-    "parcel-transformer-handlebars": "^1.0.0",
-    "notiflix": "^3.2.6"
+    "parcel-transformer-handlebars": "^1.0.0"
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.6.0",
