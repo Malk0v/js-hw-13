@@ -1850,21 +1850,17 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var _notiflix = _interopRequireDefault(require("notiflix"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+const BASE_URL = 'https://pixabay.com/api/';
+const KEY = '34664945-19b6b98906af15267810ff287';
 class ImgApi {
   constructor() {
     this.searchQuery = '';
     this.page = 1;
   }
   fetchImg() {
-    console.log(this.page);
-    const BASE_URL = 'https://pixabay.com/api/';
-    const KEY = '34664945-19b6b98906af15267810ff287';
     const url = `${BASE_URL}?key=${KEY}&q=${this.searchQuery}&per_page=4&page=${this.page}`;
-    return fetch(url).then(r => r.json()).then(data => {
+    return fetch(url).then(response => response.json()).then(data => {
       this.incrementPage();
-      _notiflix.default.Notify.success('dct');
       return data.hits;
     });
   }
@@ -1881,19 +1877,61 @@ class ImgApi {
     this.searchQuery = newQuery;
   }
 }
-exports.default = ImgApi;
-;
 
 // const TYPE = 'photo';
 // const orientation = 'horizontal';
 // const perPage = '12';
 //        fetch(`${BASE_URL}?key=${KEY}&q=${this.searchQuery}&image_type=${TYPE}&orientation=${orientation}&per_page=${perPage}&page=${PAGE}`
-},{"notiflix":"../node_modules/notiflix/dist/notiflix-aio-3.2.6.min.js"}],"index.js":[function(require,module,exports) {
+exports.default = ImgApi;
+},{}],"js/components/btnSpinnerApi.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+class LoadMoreBtn {
+  constructor(_ref) {
+    let {
+      selector,
+      hidden = false
+    } = _ref;
+    this.refs = this.getRefs(selector);
+    hidden && this.hide();
+  }
+  getRefs(selector) {
+    const refs = {};
+    refs.button = document.querySelector(selector);
+    refs.label = refs.button.querySelector('.label');
+    refs.spinner = refs.button.querySelector('.spinner');
+    return refs;
+  }
+  enable() {
+    this.refs.button.disabled = false;
+    this.refs.label.textContent = 'Показать ещё';
+    this.refs.spinner.classList.add('is-hidden');
+  }
+  disable() {
+    this.refs.button.disabled = true;
+    this.refs.label.textContent = 'Загружаем...';
+    this.refs.spinner.classList.remove('is-hidden');
+  }
+  show() {
+    this.refs.button.classList.remove('is-hidden');
+  }
+  hide() {
+    this.refs.button.classList.add('is-hidden');
+  }
+}
+exports.default = LoadMoreBtn;
+;
+},{}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _notiflix = _interopRequireDefault(require("notiflix"));
 var _card = _interopRequireDefault(require("./templates/card.hbs"));
 var _apiClass = _interopRequireDefault(require("./js/components/apiClass.js"));
+var _btnSpinnerApi = _interopRequireDefault(require("./js/components/btnSpinnerApi"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 //==================== Libs ===================//
 // import axios from 'axios';
@@ -1927,28 +1965,37 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // import fetchResponce from './js/components/apiService.js';
 // import refsSvg from './js/components/svg';
 
-//   
+//
 
 const ImgApp = new _apiClass.default();
+const BtnApp = new _btnSpinnerApi.default({
+  selector: '[data-action="load-more"]',
+  hidden: true
+});
+console.log(BtnApp);
 const refs = {
   input: document.querySelector('.search-form'),
   loadMore: document.querySelector('[data-action="load-more"]'),
   list: document.querySelector('.js-articles-container')
 };
 refs.input.addEventListener('submit', onSearch);
-refs.loadMore.addEventListener('click', onLoadMore);
+refs.loadMore.addEventListener('click', fetchArticles);
 function onSearch(e) {
   e.preventDefault();
   ImgApp.query = e.currentTarget.elements.query.value;
-  ImgApp.resetPage();
+  if (ImgApp.query === '') {
+    alert('введите что то нормальное');
+  }
+  BtnApp.show();
+  clear();
+  fetchArticles();
+}
+function fetchArticles() {
+  BtnApp.disable();
   ImgApp.fetchImg().then(hits => {
-    clear();
     appendHitsMarkup(hits);
   });
-}
-function onLoadMore() {
-  ImgApp.fetchImg().then(appendHitsMarkup);
-  console.log('loadMore');
+  BtnApp.enable();
 }
 function appendHitsMarkup(hits) {
   refs.list.insertAdjacentHTML('beforeend', (0, _card.default)(hits));
@@ -1956,7 +2003,9 @@ function appendHitsMarkup(hits) {
 function clear() {
   refs.list.innerHTML = '';
 }
-
+console.log(BtnApp.refs.button);
+console.log(BtnApp.refs.label);
+console.log(BtnApp.refs.spinner);
 // fetchQuery.then(data => {
 //   if (data.hits.length === 0) {
 //     Notiflix.Notify.success(
@@ -2009,7 +2058,7 @@ function clear() {
 // gallery.on('error.simplelightbox', function (e) {
 //   console.log(e); // some usefull information
 // });
-},{"notiflix":"../node_modules/notiflix/dist/notiflix-aio-3.2.6.min.js","./templates/card.hbs":"templates/card.hbs","./js/components/apiClass.js":"js/components/apiClass.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"notiflix":"../node_modules/notiflix/dist/notiflix-aio-3.2.6.min.js","./templates/card.hbs":"templates/card.hbs","./js/components/apiClass.js":"js/components/apiClass.js","./js/components/btnSpinnerApi":"js/components/btnSpinnerApi.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
