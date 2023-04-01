@@ -1,9 +1,6 @@
 //==================== Libs ===================//
 // import axios from 'axios';
 // import debounce from 'lodash.debounce';
-// import Notiflix from 'notiflix';
-
-// import SimpleLightbox from 'simplelightbox';
 // import InfiniteScroll from 'infinite-scroll';
 //==================== Libs ===================//
 
@@ -29,15 +26,18 @@
 //====== InfiniteScroll ======//
 
 // import fetchResponce from './js/components/apiService.js';
-// import refsSvg from './js/components/svg';
 
-//
+import Notiflix from 'notiflix';
+// import simpleLightbox from 'simplelightbox';
+// import 'simplelightbox/dist/simple-lightbox.min.css';
 
 import tpl from './templates/card.hbs';
 import ImgApi from './js/components/apiClass.js';
 import BtnApi from './js/components/btnSpinnerApi';
 
 const ImgApp = new ImgApi();
+
+// const gallery = new SimpleLightbox();
 
 const BtnApp = new BtnApi({
   selector: '[data-action="load-more"]',
@@ -57,22 +57,38 @@ function onSearch(e) {
   e.preventDefault();
   ImgApp.query = e.currentTarget.elements.query.value;
   if (ImgApp.query === '') {
-    alert('введите что то нормальное');
+    Notiflix.Notify.success(`Введите что то нормальное`);
   }
   BtnApp.show();
+  ImgApp.resetPage();
   clear();
-
   fetchArticles();
 }
 
 function fetchArticles() {
   BtnApp.disable();
 
-  ImgApp.fetchImg().then(hits => {
-    appendHitsMarkup(hits);
-     BtnApp.enable();
+  ImgApp.fetchImg().then(data => {
+    appendHitsMarkup(data.hits);
+    BtnApp.enable();
+    // gallery.refresh();
+
+    if (ImgApp.page == 2) {
+      Notiflix.Notify.success(`Всего найдено "${ImgApp.query}" - ${data.total}`);
+    }
+
+    if (data.hits.length === 0) {
+      BtnApp.hide();
+      Notiflix.Notify.success(
+        'К сожалению, нет изображений, соответствующих вашему поисковому запросу. Пожалуйста, введите что то другое',
+      );
+    }
+
+    if (ImgApp.page >= data.totalHits / 4) {
+      Notiflix.Notify.success(`Больше нет картинок`);
+      return
+    }
   });
- 
 }
 
 function appendHitsMarkup(hits) {
@@ -83,9 +99,13 @@ function clear() {
   refs.list.innerHTML = '';
 }
 
-console.log(BtnApp.refs.button)
-console.log(BtnApp.refs.label)
-console.log(BtnApp.refs.spinner);
+// gallery.on('show.simplelightbox', function () {
+//   console.log('open');
+// });
+
+// gallery.on('error.simplelightbox', function (e) {
+//   console.log(e); // some usefull information
+// });
 // fetchQuery.then(data => {
 //   if (data.hits.length === 0) {
 //     Notiflix.Notify.success(
@@ -131,10 +151,4 @@ console.log(BtnApp.refs.spinner);
 //           </div>
 //       </div>`,
 
-// gallery.on('show.simplelightbox', function () {
-//   console.log('open');
-// });
 
-// gallery.on('error.simplelightbox', function (e) {
-//   console.log(e); // some usefull information
-// });

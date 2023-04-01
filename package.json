@@ -31,7 +31,7 @@
     "lodash.debounce": "^4.0.8",
     "modern-normalize": "^1.1.0",
     "notiflix": "^3.2.6",
-    "simplelightbox": "^2.12.1"
+    "simplelightbox": "^2.13.0"
   },
   "devDependencies": {
     "@parcel/transformer-css": "^2.8.3",

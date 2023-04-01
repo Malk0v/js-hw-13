@@ -1,3 +1,4 @@
+import Notiflix from "notiflix";
 const BASE_URL = 'https://pixabay.com/api/';
 const KEY = '34664945-19b6b98906af15267810ff287';
 
@@ -14,7 +15,7 @@ export default class ImgApi {
       .then(response => response.json())
       .then(data => {
         this.incrementPage();
-        return data.hits;
+        return data;
       });
   }
 
