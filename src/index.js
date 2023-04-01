@@ -1,7 +1,7 @@
 //==================== Libs ===================//
 // import axios from 'axios';
 // import debounce from 'lodash.debounce';
-import Notiflix from 'notiflix';
+// import Notiflix from 'notiflix';
 
 // import SimpleLightbox from 'simplelightbox';
 // import InfiniteScroll from 'infinite-scroll';
@@ -44,7 +44,6 @@ const BtnApp = new BtnApi({
   hidden: true,
 });
 
-console.log(BtnApp);
 const refs = {
   input: document.querySelector('.search-form'),
   loadMore: document.querySelector('[data-action="load-more"]'),
@@ -71,8 +70,9 @@ function fetchArticles() {
 
   ImgApp.fetchImg().then(hits => {
     appendHitsMarkup(hits);
+     BtnApp.enable();
   });
-  BtnApp.enable();
+ 
 }
 
 function appendHitsMarkup(hits) {
