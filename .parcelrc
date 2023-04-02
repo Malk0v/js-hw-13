@@ -3,7 +3,12 @@
     "@parcel/config-default"
   ],
   "transforms": {
-    "*.hbs": ["parcel-transformer-handlebars"]
+    "*.hbs": [
+      "parcel-transformer-handlebars"
+    ],
+    "*.{zip,tgz}": [
+      "@parcel/transformer-raw"
+    ]
   },
   "reporters": [
     "...",
