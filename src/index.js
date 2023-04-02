@@ -22,22 +22,16 @@
 //   console.log(body);
 //   console.log(items);
 // });
-//let gallery = new SimpleLightbox('.gallery a');
-//====== InfiniteScroll ======//
+//====== ======//
 
 // import fetchResponce from './js/components/apiService.js';
 
 import Notiflix from 'notiflix';
-// import simpleLightbox from 'simplelightbox';
-// import 'simplelightbox/dist/simple-lightbox.min.css';
-
 import tpl from './templates/card.hbs';
 import ImgApi from './js/components/apiClass.js';
 import BtnApi from './js/components/btnSpinnerApi';
 
 const ImgApp = new ImgApi();
-
-// const gallery = new SimpleLightbox();
 
 const BtnApp = new BtnApi({
   selector: '[data-action="load-more"]',
@@ -90,7 +84,6 @@ function fetchArticles() {
     }
   });
 }
-
 function appendHitsMarkup(hits) {
   refs.list.insertAdjacentHTML('beforeend', tpl(hits));
 }

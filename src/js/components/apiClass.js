@@ -1,4 +1,3 @@
-import Notiflix from "notiflix";
 const BASE_URL = 'https://pixabay.com/api/';
 const KEY = '34664945-19b6b98906af15267810ff287';
 
